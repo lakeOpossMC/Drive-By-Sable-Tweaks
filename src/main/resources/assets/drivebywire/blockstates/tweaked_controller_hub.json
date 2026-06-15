@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "face=floor,facing=north": { "model": "drivebywire:block/hub" },
+    "face=floor,facing=east": { "model": "drivebywire:block/hub", "y": 90 },
+    "face=floor,facing=south": { "model": "drivebywire:block/hub", "y": 180 },
+    "face=floor,facing=west": { "model": "drivebywire:block/hub", "y": 270 },
+    "face=wall,facing=north": { "model": "drivebywire:block/hub", "x": 90 },
+    "face=wall,facing=east": { "model": "drivebywire:block/hub", "x": 90, "y": 90 },
+    "face=wall,facing=south": { "model": "drivebywire:block/hub", "x": 90, "y": 180 },
+    "face=wall,facing=west": { "model": "drivebywire:block/hub", "x": 90, "y": 270 },
+    "face=ceiling,facing=north": { "model": "drivebywire:block/hub", "x": 180, "y": 180 },
+    "face=ceiling,facing=east": { "model": "drivebywire:block/hub", "x": 180, "y": 270 },
+    "face=ceiling,facing=south": { "model": "drivebywire:block/hub", "x": 180 },
+    "face=ceiling,facing=west": { "model": "drivebywire:block/hub", "x": 180, "y": 90 }
+  }
+}
