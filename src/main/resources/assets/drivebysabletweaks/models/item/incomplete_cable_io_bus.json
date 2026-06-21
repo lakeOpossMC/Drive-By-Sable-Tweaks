@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "drivebysabletweaks:item/incomplete_cable_io_bus"
+  }
+}
