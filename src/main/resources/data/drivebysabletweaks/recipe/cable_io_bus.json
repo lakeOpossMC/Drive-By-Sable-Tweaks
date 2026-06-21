@@ -1,50 +1,26 @@
 {
+  "neoforge:conditions": [
+    { "type": "drivebysabletweaks:use_original_recipes", "expected": false }
+  ],
   "type": "create:sequenced_assembly",
-  "ingredient": {
-    "tag": "c:plates/gold"
-  },
+  "ingredient": { "tag": "c:plates/gold" },
   "results": [
-    {
-      "chance": 120.0,
-      "id": "drivebysabletweaks:cable_io_bus"
-    },
-    {
-      "chance": 5.0,
-      "id": "create:golden_sheet"
-    },
-    {
-      "chance": 2.0,
-      "id": "create:gold_nugget"
-    },
-    {
-      "chance": 8.0,
-      "id": "create:transmitter"
-    },
-    {
-      "chance": 8.0,
-      "id": "minecraft:lapis_lazuli"
-    },
-    {
-      "chance": 3.0,
-      "id": "minecraft:dried_kelp"
-    },
-    {
-      "chance": 2.0,
-      "id": "drivebywire:wire"
-    },
-    {
-      "id": "create:copper_sheet"
-    },
-    {
-      "id": "minecraft:redstone"
-    }
+    { "chance": 120.0, "id": "drivebysabletweaks:cable_io_bus" },
+    { "chance": 8.0, "id": "create:transmitter" },
+    { "chance": 8.0, "id": "create:sturdy_sheet" },
+    { "chance": 5.0, "id": "create:golden_sheet" },
+    { "chance": 3.0, "id": "minecraft:dried_kelp" },
+    { "chance": 2.0, "id": "create:gold_nugget"},
+    { "chance": 2.0, "id": "drivebywire:wire" },
+    { "id": "create:copper_sheet" },
+    { "id": "minecraft:redstone" }
   ],
   "sequence": [
     {
       "type": "create:deploying",
       "ingredients": [
         { "item": "drivebysabletweaks:incomplete_cable_io_bus" },
-        { "item": "minecraft:lapis_lazuli" }
+        { "item": "create:sturdy_sheet" }
       ],
       "results": [
         { "id": "drivebysabletweaks:incomplete_cable_io_bus" }
@@ -80,7 +56,5 @@
       ]
     }
   ],
-  "transitional_item": {
-    "id": "drivebysabletweaks:incomplete_cable_io_bus"
-  }
+  "transitional_item": { "id": "drivebysabletweaks:incomplete_cable_io_bus" }
 }
