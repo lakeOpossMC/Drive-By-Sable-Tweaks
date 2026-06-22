@@ -2,12 +2,10 @@ package edn.lakeopossmc.drivebysabletweaks;
 
 import com.mojang.logging.LogUtils;
 import edn.stratodonut.drivebywire.WireItems;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -16,9 +14,10 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.slf4j.Logger;
+
+import java.util.stream.Stream;
 
 // --- MAIN MOD CLASS --- //
 // * Handles block and item registers and tells the game "hey, they exist"
@@ -56,22 +55,40 @@ public class DriveBySableTweaks {
             return;
         }
 
-        // kill the og items pls
-        event.remove(WireItems.CONTROLLER_HUB_BLOCK.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        event.remove(WireItems.TWEAKED_CONTROLLER_HUB_BLOCK.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        // --- FAILSAFE CHECK FOR SIMULATED --- //
+        // * Because Simulated is not technically required, this checks if its installed
+        // * Then, it basically removes the old Drive-By-Wire creative tab by just killing the items
+        // * If Simulated is not present, it just inserts the new items into the tab in place of the old ones
+        if (ModList.get().isLoaded("simulated")) {
+            // kill the og items pls
+            Stream.of(
+                    WireItems.CONTROLLER_HUB_BLOCK,
+                    WireItems.TWEAKED_CONTROLLER_HUB_BLOCK,
+                    WireItems.BACKUP_BLOCK,
+                    WireItems.WIRE,
+                    WireItems.WIRE_CUTTER
+            ).forEach(item -> event.remove(
+                    item.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            ));
+        } else {
+            // kill the og items pls
+            event.remove(WireItems.CONTROLLER_HUB_BLOCK.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.remove(WireItems.TWEAKED_CONTROLLER_HUB_BLOCK.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-        // find my freaking items do NOT clone them.
-        final ItemStack newHub = WireTweaksItems.CONTROLLER_HUB_BLOCK.get().getDefaultInstance();
-        final ItemStack newTweakedHub = WireTweaksItems.TWEAKED_CONTROLLER_HUB_BLOCK.get().getDefaultInstance();
-        final ItemStack cableIoBus = WireTweaksItems.CABLE_IO_BUS.get().getDefaultInstance();
+            //find my freaking items do NOT clone them.
+            final ItemStack newHub = WireTweaksItems.CONTROLLER_HUB_BLOCK.get().getDefaultInstance();
+            final ItemStack newTweakedHub = WireTweaksItems.TWEAKED_CONTROLLER_HUB_BLOCK.get().getDefaultInstance();
+            final ItemStack cableIoBus = WireTweaksItems.CABLE_IO_BUS.get().getDefaultInstance();
 
-        event.remove(newHub, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        event.remove(newTweakedHub, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        event.remove(cableIoBus, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.remove(newHub, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.remove(newTweakedHub, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.remove(cableIoBus, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
-        event.accept(newHub);
-        event.accept(newTweakedHub);
-        event.accept(cableIoBus);
+            event.accept(newHub);
+            event.accept(newTweakedHub);
+            event.accept(cableIoBus);
+        }
     }
 
     public static ResourceLocation asResource(final String path) {
