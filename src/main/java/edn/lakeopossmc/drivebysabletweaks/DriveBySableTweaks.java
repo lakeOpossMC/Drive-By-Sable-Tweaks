@@ -2,10 +2,12 @@ package edn.lakeopossmc.drivebysabletweaks;
 
 import com.mojang.logging.LogUtils;
 import edn.stratodonut.drivebywire.WireItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -13,8 +15,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.slf4j.Logger;
 
@@ -37,6 +39,14 @@ public class DriveBySableTweaks {
         // config and event stuffs
         modContainer.registerConfig(net.neoforged.fml.config.ModConfig.Type.COMMON, WireTweaksConfig.SPEC);
         modEventBus.addListener(this::buildContents);
+        modEventBus.addListener(this::commonSetup);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        // optional integration with Create Simulated's tab
+        if (ModList.get().isLoaded("simulated")) {
+            event.enqueueWork(WireTweaksSimulatedTab::register);
+        }
     }
 
     // --- CREATIVE TAB FIXES --- //

@@ -1,0 +1,10 @@
+{
+  "priority": 9999,
+  "title": {
+    "text": { "translate": "itemGroup.drivebysabletweaks.drivebywire_section" },
+    "background": "#aa1a1a2e",
+    "color": "#ffffffff"
+  },
+  "sprite": "drivebysabletweaks:drivebywire_banner",
+  "only_animate_on_hover": true
+}

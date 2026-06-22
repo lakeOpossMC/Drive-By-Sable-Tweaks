@@ -5,7 +5,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "drivebywire:block/tweaked_hub",
-		"particle": "drivebywire:block/tweaked_hub"
+		"particle": "create:block/vault/vault_front_small"
 	},
 	"elements": [
 		{

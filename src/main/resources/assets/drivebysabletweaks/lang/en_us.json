@@ -2,5 +2,6 @@
   "block.drivebysabletweaks.cable_hub": "Cable Hub",
   "block.drivebysabletweaks.advanced_cable_hub": "Advanced Cable Hub",
   "item.drivebysabletweaks.cable_io_bus": "Cable I/O Bus",
-  "item.drivebysabletweaks.incomplete_cable_io_bus": "Incomplete Cable I/O Bus"
+  "item.drivebysabletweaks.incomplete_cable_io_bus": "Incomplete Cable I/O Bus",
+  "itemGroup.drivebysabletweaks.drivebywire_section": "Drive-By-Wire"
 }

@@ -4,7 +4,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "drivebywire:block/hub",
-		"particle": "drivebywire:block/hub"
+		"particle": "create:block/brass_casing"
 	},
 	"elements": [
 		{

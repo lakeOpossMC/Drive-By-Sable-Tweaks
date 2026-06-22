@@ -10,7 +10,7 @@
     { "chance": 8.0, "id": "create:sturdy_sheet" },
     { "chance": 5.0, "id": "create:golden_sheet" },
     { "chance": 3.0, "id": "minecraft:dried_kelp" },
-    { "chance": 2.0, "id": "create:gold_nugget"},
+    { "chance": 2.0, "id": "minecraft:gold_nugget"},
     { "chance": 2.0, "id": "drivebywire:wire" },
     { "id": "create:copper_sheet" },
     { "id": "minecraft:redstone" }
