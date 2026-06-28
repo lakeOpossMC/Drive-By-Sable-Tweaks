@@ -12,23 +12,31 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+// --- BLOCK FOR PRESERVING NETWORKS --- //
+// * This class is setup for the physical block
+// * Only information stored here is pos and block entity
 public class NetworkBackupDriveBlock extends Block implements EntityBlock {
+    // --- DEF CODEC --- //
     public static final MapCodec<NetworkBackupDriveBlock> CODEC = simpleCodec(NetworkBackupDriveBlock::new);
 
+    // --- BLOCK PROPS --- //
     public NetworkBackupDriveBlock(final Properties properties) {
         super(properties);
     }
 
+    // --- MAPCODEC TO CODEC --- //
     @Override
     protected MapCodec<? extends Block> codec() {
         return CODEC;
     }
 
+    // --- DEF BLOCK ENTITY --- //
     @Override
     public @Nullable BlockEntity newBlockEntity(final BlockPos pos, final BlockState state) {
         return new NetworkBackupDriveBlockEntity(pos, state);
     }
 
+    // --- MAP BLOCK ENTITY TO CORRECT POS AND LEVEL --- //
     @Override
     public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(
         final Level level,

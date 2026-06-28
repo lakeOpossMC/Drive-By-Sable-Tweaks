@@ -16,7 +16,11 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+// --- BLOCK ENTITY FOR PRESERVER --- //
+// * This block entity stores information for schematics
+// * The entire network is stored (per sublevel)
 public class NetworkBackupDriveBlockEntity extends BlockEntity {
+    // --- KEY/SYMBOL SETUP --- //
     private static final String CABLE_NETWORK_KEY = "WireNetwork";
     private static final int RESTORE_RETRY_INTERVAL = 20;
 
@@ -25,10 +29,12 @@ public class NetworkBackupDriveBlockEntity extends BlockEntity {
     private int restoreRetryCooldown;
     private int restoreAttempts;
 
+    // --- GET POS AND STATE --- //
     public NetworkBackupDriveBlockEntity(final BlockPos pos, final BlockState blockState) {
         super(CableBlockEntities.BACKUP_DRIVE.get(), pos, blockState);
     }
 
+    // --- HANDLE CONNECTION SAVES IN SCHEMATICS --- //
     @Override
     protected void saveAdditional(final CompoundTag tag, final HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
@@ -90,7 +96,7 @@ public class NetworkBackupDriveBlockEntity extends BlockEntity {
             && context.getType() == SubLevelSchematicSerializationContext.Type.SAVE
             && skippedConnections > 0) {
             DriveBySableMod.LOGGER.warn(
-                "Backup block at {} skipped {} unsupported wire connections while saving schematic; only links whose endpoints stay inside the same blueprint batch are preserved.",
+                "Backup block at {} skipped {} unsupported cable connections while saving schematic; only links whose endpoints stay inside the same blueprint batch are preserved.",
                 this.worldPosition,
                 skippedConnections
             );
@@ -180,7 +186,7 @@ public class NetworkBackupDriveBlockEntity extends BlockEntity {
 
         if (restoreResult.skippedConnections() > 0) {
             DriveBySableMod.LOGGER.warn(
-                "Backup block at {} did not restore {} unsupported wire connections; cross-sublevel and sublevel-to-world links are intentionally skipped.",
+                "Backup block at {} did not restore {} unsupported cable connections; cross-sublevel and sublevel-to-world links are intentionally skipped.",
                 pos,
                 restoreResult.skippedConnections()
             );
@@ -193,6 +199,8 @@ public class NetworkBackupDriveBlockEntity extends BlockEntity {
         blockEntity.setChanged();
     }
 
+    // --- LEFTOVER FROM DRIVEBYWIRE --- //
+    // * Probably useless, since the blockstates have been removed from the main block for simplicity
     private Direction getFacing() {
         final BlockState blockState = this.getBlockState();
         return blockState.hasProperty(HorizontalDirectionalBlock.FACING)
