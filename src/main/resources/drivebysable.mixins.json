@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "package": "edn.lakeopossmc.drivebysable.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MixinServerLevel",
+    "compat.aeronautics.MixinWheelMountBlockEntity",
+    "compat.MixinSubLevelAssemblyHelper",
+    "compat.MixinLecternControllerBlock",
+    "compat.MixinLecternCableBlockEntity",
+    "compat.MixinLinkedControllerInputPacket",
+    "compat.MixinLinkedControllerStopLecternPacket",
+    "compat.tracks.MixinSableTrackBlockEntity",
+    "compat.tweaked.MixinLecternTweakedBlock",
+    "compat.tweaked.MixinTweakedLecternCableBlockEntity",
+    "compat.tweaked.MixinTweakedController",
+    "compat.tweaked.MixinTweakedControllerAxisPacket",
+    "compat.tweaked.MixinTweakedControllerButtonPacket",
+    "compat.tweaked.MixinTweakedControllerStopLecternPacket"
+  ],
+  "client": [
+    "client.MixinLinkedControllerClientHandlerAccessor",
+    "client.MixinTweakedLinkedControllerClientHandlerAccessor",
+    "client.MixinSchematicAndQuillHandler"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8",
+  "refmap": "drivebysable.refmap.json"
+}

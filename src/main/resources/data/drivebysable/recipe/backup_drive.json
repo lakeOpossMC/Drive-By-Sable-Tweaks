@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": { "item": "create:transmitter" },
+    "B": { "item": "drivebysable:cable_io_bus" },
+    "C": { "item": "minecraft:quartz" },
+    "D": { "item": "create:empty_schematic" }
+  },
+  "pattern": [
+    "BCB",
+    "ADA",
+    "BCB"
+  ],
+  "result": { "count": 1, "id": "drivebysable:backup_drive" }
+}

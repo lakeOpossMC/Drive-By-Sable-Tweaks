@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "drivebywire:block/backup_block/backupblock_top",
-    "side": "drivebywire:block/backup_block/backupblock_side"
-  }
-}

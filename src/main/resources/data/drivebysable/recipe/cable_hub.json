@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "A": { "item": "create:transmitter" },
+    "B": { "item": "drivebysable:cable_io_bus" },
+    "C": { "item": "create:brass_casing" },
+    "D": { "item": "drivebysable:cable" }
+  },
+  "pattern": [
+    "ABA",
+    "DCD",
+    "   "
+  ],
+  "result": { "count": 1, "id": "drivebysable:cable_hub" }
+}

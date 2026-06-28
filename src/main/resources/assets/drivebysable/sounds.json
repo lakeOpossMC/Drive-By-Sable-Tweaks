@@ -1,0 +1,18 @@
+{
+  "plug_in" : {
+    "subtitle": "subtitle.drivebysable.plug.in",
+    "sounds" : [
+      {
+        "name": "drivebysable:plug_in"
+      }
+    ]
+  },
+  "plug_out": {
+    "subtitle": "subtitle.drivebysable.plug.out",
+    "sounds" : [
+      {
+        "name": "drivebysable:plug_out"
+      }
+    ]
+  }
+}

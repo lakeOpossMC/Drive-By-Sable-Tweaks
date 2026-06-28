@@ -152,10 +152,6 @@ configurations {
 
 dependencies {
 
-    // Drive By Wire
-    compileOnly files('libs/drivebywire-0.2.9.jar')
-    localRuntime files('libs/drivebywire-0.2.9.jar')
-
     // Create/Flywheel/Ponder
     implementation("com.simibubi.create:create-${minecraft_version}:${create_version}") {
         transitive = false
