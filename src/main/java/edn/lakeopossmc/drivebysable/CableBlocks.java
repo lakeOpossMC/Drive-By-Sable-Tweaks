@@ -15,15 +15,27 @@ public final class CableBlocks {
 
     public static final DeferredBlock<NetworkBackupDriveBlock> BACKUP_DRIVE = BLOCKS.register(
         "backup_drive",
-        () -> new NetworkBackupDriveBlock(commonProperties())
+        () -> new NetworkBackupDriveBlock(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_ORANGE)
+                .sound(SoundType.LODESTONE)
+                .strength(3.0F, 6.0F)
+                .requiresCorrectToolForDrops())
     );
     public static final DeferredBlock<CableHubBlock> CABLE_HUB = BLOCKS.register(
         "cable_hub",
-        () -> new CableHubBlock(commonProperties())
+        () -> new CableHubBlock(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_BROWN)
+                .sound(SoundType.METAL)
+                .strength(3.0F, 6.0F)
+                .requiresCorrectToolForDrops())
     );
     public static final DeferredBlock<AdvancedCableHubBlock> ADVANCED_CABLE_HUB = BLOCKS.register(
         "advanced_cable_hub",
-        () -> new AdvancedCableHubBlock(commonProperties())
+        () -> new AdvancedCableHubBlock(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_BLUE)
+                .sound(SoundType.NETHERITE_BLOCK)
+                .strength(3.0F, 6.0F)
+                .requiresCorrectToolForDrops())
     );
 
     private CableBlocks() {
@@ -31,13 +43,5 @@ public final class CableBlocks {
 
     public static void register(final IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
-    }
-
-    private static BlockBehaviour.Properties commonProperties() {
-        return BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_ORANGE)
-            .sound(SoundType.COPPER)
-            .strength(3.0F, 6.0F)
-            .requiresCorrectToolForDrops();
     }
 }
