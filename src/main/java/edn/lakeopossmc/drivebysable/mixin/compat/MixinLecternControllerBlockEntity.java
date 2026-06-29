@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LecternControllerBlockEntity.class)
-public abstract class MixinLecternCableBlockEntity implements LecternCableHubDuck {
+public abstract class MixinLecternControllerBlockEntity implements LecternCableHubDuck {
     @Unique
     private static final String DRIVEBYSABLE$HUB_KEY = "DriveBySableHub";
 

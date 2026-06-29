@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 // * The entire network is stored (per sublevel)
 public class NetworkBackupDriveBlockEntity extends BlockEntity {
     // --- KEY/SYMBOL SETUP --- //
-    private static final String CABLE_NETWORK_KEY = "WireNetwork";
+    private static final String CABLE_NETWORK_KEY = "CableNetwork";
     private static final int RESTORE_RETRY_INTERVAL = 20;
 
     private CompoundTag pendingBackupData;

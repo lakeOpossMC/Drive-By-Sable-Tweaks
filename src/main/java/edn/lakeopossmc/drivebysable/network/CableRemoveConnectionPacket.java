@@ -38,9 +38,9 @@ public record CableRemoveConnectionPacket(BlockPos source, BlockPos sink, Direct
 
         if (CableNetworkManager.removeConnection(player.level(), payload.source(), payload.sink(), payload.direction(), payload.channel())) {
             if (CableConfig.CONFIG.shouldConsumeCables.get() && !player.hasInfiniteMaterials()) {
-                final ItemStack wire = new ItemStack(CableItems.CABLE.get());
-                if (!player.addItem(wire)) {
-                    player.drop(wire, false);
+                final ItemStack cable = new ItemStack(CableItems.CABLE.get());
+                if (!player.addItem(cable)) {
+                    player.drop(cable, false);
                 }
             }
             player.level().playSound(null, payload.sink(), CableSounds.PLUG_OUT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);

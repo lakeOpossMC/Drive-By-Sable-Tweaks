@@ -70,7 +70,7 @@ public final class ClientCableNetworkHandler {
         final Item eventItem = event.getItemStack().getItem();
         final BlockState hitBlock = event.getLevel().getBlockState(event.getHitVec().getBlockPos());
         if (eventItem instanceof CableItem) {
-            event.setUseBlock(TriState.FALSE); // don't interact with block if connecting wire
+            event.setUseBlock(TriState.FALSE); // don't interact with block if connecting cable
         }
         if ((eventItem instanceof LinkedControllerItem && hitBlock.is(CableBlocks.CABLE_HUB) || (eventItem instanceof TweakedControllerDuck && hitBlock.is(CableBlocks.ADVANCED_CABLE_HUB)))) {
             event.setUseItem(TriState.FALSE); // don't start using controller if binding to hub
@@ -136,7 +136,7 @@ public final class ClientCableNetworkHandler {
             currentNetwork = latestNetwork;
             if (pendingSchematicSyncReason != null) {
                 DriveBySableMod.LOGGER.info(
-                    "[schematic-debug] Client wire mirror refreshed after {}: {} sources / {} connections.",
+                    "[schematic-debug] Client cable mirror refreshed after {}: {} sources / {} connections.",
                     pendingSchematicSyncReason,
                     currentNetwork.size(),
                     countConnections(currentNetwork)
@@ -175,7 +175,7 @@ public final class ClientCableNetworkHandler {
     public static void requestSchematicSync(final String reason) {
         pendingSchematicSyncReason = reason;
         DriveBySableMod.LOGGER.info(
-            "[schematic-debug] Requesting wire mirror sync for {}. Current client mirror: {} sources / {} connections.",
+            "[schematic-debug] Requesting cable mirror sync for {}. Current client mirror: {} sources / {} connections.",
             reason,
             currentNetwork.size(),
             countConnections(currentNetwork)
@@ -271,21 +271,21 @@ public final class ClientCableNetworkHandler {
         final BlockPos end,
         final Direction direction,
         final int faceColor,
-        final int wireColor
+        final int cableColor
     ) {
         drawOutlineFace(end, direction, faceColor);
         Outliner.getInstance()
             .showLine(
-                net.createmod.catnip.data.Pair.of("wireConnection", net.createmod.catnip.data.Pair.of(end, direction)),
+                net.createmod.catnip.data.Pair.of("cableConnection", net.createmod.catnip.data.Pair.of(end, direction)),
                 Vec3.atCenterOf(start),
                 Vec3.atCenterOf(end).add(Vec3.atLowerCornerOf(direction.getNormal()).scale(0.5D))
             )
-            .colored(wireColor);
+            .colored(cableColor);
     }
 
     private static void drawOutlineFace(final BlockPos pos, final Direction direction, final int color) {
         Outliner.getInstance()
-            .showAABB(net.createmod.catnip.data.Pair.of("wireFace", BlockFace.of(pos, direction)), FaceOutlines.getOutline(direction).move(pos))
+            .showAABB(net.createmod.catnip.data.Pair.of("cableFace", BlockFace.of(pos, direction)), FaceOutlines.getOutline(direction).move(pos))
             .colored(color)
             .lineWidth(0.0625F);
     }
@@ -294,7 +294,7 @@ public final class ClientCableNetworkHandler {
         final BlockState state = level.getBlockState(pos);
         final AABB box = state.getShape(level, pos).isEmpty() ? UNIT_CUBE : state.getShape(level, pos).bounds();
         Outliner.getInstance()
-            .showAABB(net.createmod.catnip.data.Pair.of("wireBlock", pos), box.move(pos))
+            .showAABB(net.createmod.catnip.data.Pair.of("cableBlock", pos), box.move(pos))
             .colored(color)
             .lineWidth(0.0625F);
     }

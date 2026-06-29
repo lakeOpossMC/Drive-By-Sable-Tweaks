@@ -213,9 +213,9 @@ public final class CableNetworkManager {
 
         perChannel.forEach((channel, sinksOnChannel) -> sinksOnChannel.forEach(sink -> {
             if (CableConfig.CONFIG.shouldConsumeCables.get() && !serverPlayer.hasInfiniteMaterials()) {
-                final ItemStack wire = new ItemStack(CableItems.CABLE.get());
-                if (!serverPlayer.addItem(wire)) {
-                    serverPlayer.drop(wire, false);
+                final ItemStack cable = new ItemStack(CableItems.CABLE.get());
+                if (!serverPlayer.addItem(cable)) {
+                    serverPlayer.drop(cable, false);
                 }
             }
             removeSinkReference(sourceKey, channel, sink);

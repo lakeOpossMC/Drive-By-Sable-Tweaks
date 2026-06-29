@@ -7,7 +7,7 @@
     "compat.aeronautics.MixinWheelMountBlockEntity",
     "compat.MixinSubLevelAssemblyHelper",
     "compat.MixinLecternControllerBlock",
-    "compat.MixinLecternCableBlockEntity",
+    "compat.MixinLecternControllerBlockEntity",
     "compat.MixinLinkedControllerInputPacket",
     "compat.MixinLinkedControllerStopLecternPacket",
     "compat.tracks.MixinSableTrackBlockEntity",
